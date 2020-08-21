@@ -49,7 +49,6 @@ namespace API.Controllers
                 return BadRequest();
 
             user.Id = id;   
-            user.Address.Id = users.Address.Id;
             _repo.Update(user);
             await _repo.SaveChangesAsync();
 

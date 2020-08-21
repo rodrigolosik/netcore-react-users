@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200815001708_initial")]
-    partial class initial
+    [Migration("20200819000823_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,30 +21,6 @@ namespace API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("API.Models.Address", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Address");
-                });
-
             modelBuilder.Entity("API.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -52,14 +28,11 @@ namespace API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -67,16 +40,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("API.Models.User", b =>
-                {
-                    b.HasOne("API.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
                 });
 #pragma warning restore 612, 618
         }

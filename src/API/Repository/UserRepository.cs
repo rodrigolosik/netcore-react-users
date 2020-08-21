@@ -38,14 +38,14 @@ namespace API.Repository
 
         public async Task<User> Select(int id)
         {
-            IQueryable<User> query = _context.Users.Include(u => u.Address);
+            IQueryable<User> query = _context.Users;
 
             return await query.FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<User>> List()
         {
-            IQueryable<User> query = _context.Users.Include(u => u.Address);
+            IQueryable<User> query = _context.Users;
             return await query.ToListAsync();
         }
     }
