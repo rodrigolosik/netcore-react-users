@@ -1,7 +1,7 @@
 import React , { Component } from "react";
 import { Redirect } from "react-router-dom";
 import './index.css';
-import { Form, FormGroup, Container, Row , Col} from "react-bootstrap";
+import { Form, FormGroup, Container, Row , Col, Button} from "react-bootstrap";
 
 class AddUser extends Component {
     constructor (props) {
@@ -10,7 +10,6 @@ class AddUser extends Component {
         this.state = {
             user : {
                 name : "",
-                dateBirth : "",
                 email : ""
             },
             redirect : false
@@ -24,46 +23,29 @@ class AddUser extends Component {
             return <Redirect to={`/users`}></Redirect>;
         }else{
             return (
-                <Container fluid><Row><Col>
-                <Form onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        <legend>New User</legend>
+                <Container fluid>
+                    <Row>
+                        <Col>
+                            <Form onSubmit={this.handleSubmit}>
+                                <fieldset>
+                                    <legend>New User</legend>
 
-                            <FormGroup>
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" onChange={this.handleInputChange} value={this.state.user.name} required name="name" id="name" />
-                            </FormGroup>
+                                        <FormGroup>
+                                            <Form.Label>Name</Form.Label>
+                                            <Form.Control type="text" onChange={this.handleInputChange} value={this.state.user.name} required name="name" id="name" />
+                                        </FormGroup>
 
-                        <div className="user-insert">
-                            <label htmlFor="dateBirth">Date Birth</label>
-                            <input 
-                                type="date" 
-                                id="datebirth" 
-                                name="datebirth" 
-                                placeholder="Insert your birth Date" 
-                                required 
-                                value={this.state.user.dateBirth} 
-                                onChange={this.handleInputChange} />
-                        </div>
+                                        <FormGroup>
+                                            <Form.Label>Email</Form.Label>
+                                            <Form.Control type="email" onChange={this.handleInputChange} value={this.state.user.email} required name="email" id="email" />
+                                        </FormGroup>
 
-                        <div className="user-insert">
-                            <label htmlFor="email">Email</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                placeholder="Insert your email" 
-                                required 
-                                value={this.state.user.email} 
-                                onChange={this.handleInputChange} />
-                        </div>
+                                    <Button type="submit">Ok</Button>
 
-                        <button type="submit">Ok</button>
-
-                    </fieldset>
-                </Form>
-                </Col>
-                </Row>
+                                </fieldset>
+                            </Form>
+                        </Col>
+                    </Row>
                 </Container>
             )
         }
@@ -74,9 +56,13 @@ class AddUser extends Component {
         const name = target.name;
         const value = target.value;
 
+        console.log("target:" + target + " name: " + name + " value: " + value);
+
         this.setState(prevState => ({
             user: {...prevState.user , [name] : value}
         }))
+
+        console.log("user" + this.state.user);
     }
 
     handleSubmit = event => {

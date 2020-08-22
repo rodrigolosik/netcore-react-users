@@ -38,9 +38,7 @@ namespace API.Repository
 
         public async Task<User> Select(int id)
         {
-            IQueryable<User> query = _context.Users;
-
-            return await query.FirstOrDefaultAsync();
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task<IEnumerable<User>> List()

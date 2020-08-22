@@ -39,7 +39,7 @@ export default class Main extends Component {
                                 <td>
                                     <ButtonGroup>
                                         <Button href={`/user/${user.id}`} size="sm" >Details</Button>
-                                        <Button variant="warning" href={`/user/${user.id}`} size="sm" >Edit</Button>
+                                        <Button variant="warning" href={`/editUser/${user.id}`} size="sm" >Edit</Button>
                                         <Button variant="danger" href={`/user/${user.id}`} size="sm" >Remove</Button>
                                     </ButtonGroup>
                                 </td>
