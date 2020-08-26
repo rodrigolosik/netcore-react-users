@@ -25,7 +25,7 @@ class AddUser extends Component {
             return (
                 <Container fluid>
                     <Row>
-                        <Col>
+                        <Col xs={6}>
                             <Form onSubmit={this.handleSubmit}>
                                 <fieldset>
                                     <legend>New User</legend>

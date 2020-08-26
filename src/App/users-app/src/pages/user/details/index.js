@@ -21,10 +21,10 @@ export default class User extends Component {
         return (
             <div className="user-info">
                 <h1>{user.name}</h1>
-                <h1>{user.dateBirth}</h1>
+                <h1>{user.email}</h1>
                 <Link to={`/users`}>Back</Link>
-                <Link to={`/editUser`}>Edit</Link>
-                <Link to={`/deleteUser`}>Delete</Link>
+                <Link to={`/edit`}>Edit</Link>
+                <Link to={`/delete`}>Delete</Link>
             </div>
         )
     }
